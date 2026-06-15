@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left branding */}
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-purpleAccent to-cyanAccent flex items-center justify-center shadow-lg shadow-purpleAccent/25">
+          <div className="w-8 h-8 rounded-lg bg-linear-to-tr from-purpleAccent to-cyanAccent flex items-center justify-center shadow-lg shadow-purpleAccent/25">
             <span className="text-sm font-black text-white">MT</span>
           </div>
           <div className="text-left">
