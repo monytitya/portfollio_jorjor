@@ -141,10 +141,8 @@ export const Hero: React.FC = () => {
                 <img
                   src="/titya.jpg"
                   alt="Mony Titya Portrait"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600";
-                  }}
+                  className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-125 group-hover:rotate-1 group-hover:brightness-110"
+                  style={{ transformOrigin: "center center", objectPosition: "center center" }}
                 />
                 {/* Dark gradient overlay at the bottom of the image to blend with the card */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#090514]/95 via-transparent to-transparent"></div>
@@ -162,6 +160,14 @@ export const Hero: React.FC = () => {
                   <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">Java</span>
                   <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">Spring Boot</span>
                   <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">After Effects</span>
+                </div>
+                <div className="mt-3 flex items-center justify-center gap-2">
+                  <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 p-1.5 overflow-hidden">
+                    <img src="/profile.jpg" alt="Profile preview" className="w-full h-full rounded-lg object-cover transition-all duration-500 group-hover:scale-125" />
+                  </div>
+                  <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 p-1.5 overflow-hidden">
+                    <img src="/titya.jpg" alt="Titya preview" className="w-full h-full rounded-lg object-cover transition-all duration-500 group-hover:scale-125" />
+                  </div>
                 </div>
               </div>
             </div>
