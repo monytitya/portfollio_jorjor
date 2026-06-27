@@ -132,43 +132,37 @@ export const Hero: React.FC = () => {
               transformStyle: "preserve-3d",
               transition: "transform 0.1s ease",
             }}
-            className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[420px] rounded-3xl p-[1px] bg-gradient-to-tr from-purpleAccent via-pink-500 to-cyanAccent overflow-hidden shadow-2xl group cursor-pointer"
+            className="relative w-[300px] h-[390px] sm:w-[360px] sm:h-[470px] rounded-3xl p-[1px] bg-gradient-to-tr from-purpleAccent via-pink-500 to-cyanAccent overflow-hidden shadow-2xl group cursor-pointer"
           >
             {/* Visual Glass Wrapper */}
             <div className="absolute inset-[1px] bg-[#090514]/85 rounded-[23px] overflow-hidden p-4 flex flex-col justify-between" style={{ transform: "translateZ(20px)" }}>
               {/* Profile Image Frame */}
               <div className="relative w-full h-[78%] rounded-2xl overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
-                <img
-                  src="/titya.jpg"
-                  alt="Mony Titya Portrait"
-                  className="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-125 group-hover:rotate-1 group-hover:brightness-110"
-                  style={{ transformOrigin: "center center", objectPosition: "center center" }}
-                />
+                <div className="w-full h-full flex items-center justify-center">
+                  <img
+                    src="/titya.jpg"
+                    alt="Mony Titya Portrait"
+                    className="max-w-full max-h-full w-full h-full object-cover object-center mx-auto transition-all duration-700 group-hover:scale-125 group-hover:rotate-1 group-hover:brightness-110"
+                    style={{ transformOrigin: "center center", objectPosition: "center center" }}
+                  />
+                </div>
                 {/* Dark gradient overlay at the bottom of the image to blend with the card */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#090514]/95 via-transparent to-transparent"></div>
               </div>
 
               {/* Bottom Details */}
-              <div className="flex flex-col items-center justify-center text-center mt-2">
-                <h3 className="text-base sm:text-lg font-bold text-white tracking-wide font-display">
-                  Mony Titya
+              <div className="flex flex-col items-center justify-center text-center mt-2 leading-relaxed">
+                <h3 className="text-base sm:text-lg font-bold text-white tracking-wide font-display leading-tight">
+                  Mao Tityamony
                 </h3>
-                <p className="text-[11px] sm:text-xs text-cyanAccent font-medium">
-                  Software Engineer & Motion Designer
+                <p className="text-[11px] sm:text-xs text-cyanAccent font-medium leading-relaxed">
+                  Backend Developer
                 </p>
-                <div className="flex gap-2 mt-2">
+                <div className="flex gap-2 mt-2 leading-relaxed">
                   <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">Java</span>
                   <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">Spring Boot</span>
-                  <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[9px] font-mono text-gray-300">After Effects</span>
                 </div>
-                <div className="mt-3 flex items-center justify-center gap-2">
-                  <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 p-1.5 overflow-hidden">
-                    <img src="/profile.jpg" alt="Profile preview" className="w-full h-full rounded-lg object-cover transition-all duration-500 group-hover:scale-125" />
-                  </div>
-                  <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 p-1.5 overflow-hidden">
-                    <img src="/titya.jpg" alt="Titya preview" className="w-full h-full rounded-lg object-cover transition-all duration-500 group-hover:scale-125" />
-                  </div>
-                </div>
+                
               </div>
             </div>
 
@@ -188,7 +182,7 @@ export const Hero: React.FC = () => {
               <Code className="w-3.5 h-3.5" />
             </div>
             <div className="text-left">
-              <p className="text-[10px] text-gray-400 font-medium leading-none">Specialist</p>
+              <p className="text-[10px] text-gray-100 font-medium leading-none">Specialist</p>
               <p className="text-[11px] font-bold text-white">Java Backend</p>
             </div>
           </motion.div>
@@ -201,13 +195,13 @@ export const Hero: React.FC = () => {
             className="absolute bottom-10 -left-6 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-2 shadow-lg"
             style={{ y: "10px" }}
           >
-            <div className="p-1 rounded bg-purpleAccent/20 text-purpleAccent">
+            {/* <div className="p-1 rounded bg-purpleAccent/20 text-purpleAccent">
               <Sparkles className="w-3.5 h-3.5" />
             </div>
             <div className="text-left">
               <p className="text-[10px] text-gray-400 font-medium leading-none">Creative</p>
               <p className="text-[11px] font-bold text-white">Motion Designer</p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
