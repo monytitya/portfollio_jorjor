@@ -137,7 +137,7 @@ export const Hero: React.FC = () => {
             {/* Visual Glass Wrapper */}
             <div className="absolute inset-[1px] bg-[#090514]/85 rounded-[23px] overflow-hidden p-4 flex flex-col justify-between" style={{ transform: "translateZ(20px)" }}>
               {/* Profile Image Frame */}
-              <div className="relative w-full h-[78%] rounded-2xl overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
+              <div className="relative w-full h-[100%] rounded-2xl overflow-hidden border border-white/10 bg-white/5 flex items-center justify-center">
                 <div className="w-full h-full flex items-center justify-center">
                   <img
                     src="/titya.jpg"
@@ -182,7 +182,7 @@ export const Hero: React.FC = () => {
               <Code className="w-3.5 h-3.5" />
             </div>
             <div className="text-left">
-              <p className="text-[10px] text-gray-100 font-medium leading-none">Specialist</p>
+              <p className="text-[10px] text-gray-400 font-medium leading-none">Specialist</p>
               <p className="text-[11px] font-bold text-white">Java Backend</p>
             </div>
           </motion.div>
