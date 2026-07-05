@@ -1,15 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { 
+import {  
   FaJava, FaHtml5, FaCss3Alt, FaJs, FaReact, 
-  FaGitAlt, FaGithub, FaDocker, FaLinux, FaDatabase, FaCode,
-  FaPython, FaPhp, FaLaravel, FaGitSquare, FaNetworkWired
+  FaGithub, FaDocker, FaLinux, FaDatabase, FaCode,
+  FaPython, FaPhp, FaGitSquare, FaNetworkWired
 } from "react-icons/fa";
 import { 
   SiSpringboot, 
   SiTypescript, SiMysql, SiPostgresql, 
   SiPostman, SiApachemaven, SiIntellijidea,
-  SiFastapi, SiFlask
+  SiFastapi, SiFlask, SiCplusplus, SiCsharp, SiOracle, SiSwagger, SiGithubactions
 } from "react-icons/si";
 
 const skillCategories = [
@@ -19,9 +19,9 @@ const skillCategories = [
     items: [
       { name: "HTML5", icon: FaHtml5, color: "text-[#E34F26]", level: 95 },
       { name: "CSS3", icon: FaCss3Alt, color: "text-[#1572B6]", level: 90 },
-      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]", level: 90 },
-      { name: "TypeScript", icon: SiTypescript, color: "text-[#3178C6]", level: 85 },
-      { name: "React", icon: FaReact, color: "text-[#61DAFB]", level: 85 },
+      { name: "JavaScript", icon: FaJs, color: "text-[#F7DF1E]", level: 60 },
+      { name: "TypeScript", icon: SiTypescript, color: "text-[#3178C6]", level: 50 },
+      { name: "React", icon: FaReact, color: "text-[#61DAFB]", level: 80 },
     ]
   },
   {
@@ -36,14 +36,13 @@ const skillCategories = [
     ]
   },
   {
-    title: "Programming &\nNetworking",
+    title: "Programming",
     icon: FaNetworkWired,
     items: [
-      { name: "Spring Boot", icon: SiSpringboot, color: "text-[#6DB33F]", level: 90 },
-      { name: "Docker", icon: FaDocker, color: "text-[#2496ED]", level: 80 },
+      { name: "C++", icon: SiCplusplus, color: "text-[#00599C]", level: 90 },
+      { name: "C#", icon: SiCsharp, color: "text-[#239120]", level: 80 },
       { name: "Linux", icon: FaLinux, color: "text-yellow-200", level: 75 },
-      { name: "PostgreSQL", icon: SiPostgresql, color: "text-[#4169E1]", level: 85 },
-      { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", level: 90 },
+      { name: "PHP", icon: FaPhp, color: "text-[#777BB4]", level: 85 },
     ]
   },
   {
@@ -54,7 +53,18 @@ const skillCategories = [
       { name: "GitHub", icon: FaGithub, color: "text-white", level: 95 },
       { name: "Postman", icon: SiPostman, color: "text-[#FF6C37]", level: 90 },
       { name: "Maven", icon: SiApachemaven, color: "text-[#C71A22]", level: 85 },
-      { name: "VS Code", icon: FaCode, color: "text-[#007ACC]", level: 95 },
+      { name: "Swagger", icon: SiSwagger, color: "text-[#85CBF2]", level: 95 },
+      { name: "Docker", icon: FaDocker, color: "text-[#2496ED]", level: 95 },
+      { name: "CI/CD", icon: SiGithubactions, color: "text-[#2088FF]", level: 75 },
+    ]
+  },
+   {
+    title: "Database",
+    icon: FaDatabase,
+    items: [
+      { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", level: 95 },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "text-[#4169E1]", level: 95 },
+      { name: "Oracle", icon: SiOracle, color: "text-[#F80000]", level: 90 },
     ]
   }
 ];
@@ -70,7 +80,7 @@ export const Skills: React.FC = () => {
     title: string;
     icon: any;
     items: Array<{ name: string; icon: any; color: string; level: number }>;
-  } | null>(null);
+  } | null>(skillCategories[1]);
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden bg-[#030014]">
@@ -192,18 +202,23 @@ export const Skills: React.FC = () => {
                     transition={{ duration: 0.4, delay: 0.1 }}
                   >
                     <motion.div 
-                      className="p-2 bg-cyanAccent/10 rounded-lg"
+                      className="p-3 bg-cyanAccent/10 rounded-full"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 2, ease: "linear", repeat: Infinity }}
                     >
-                      <selectedCategory.icon className="w-6 h-6 text-cyanAccent" />
+                      <selectedCategory.icon className="w-7 h-7 text-cyanAccent" />
                     </motion.div>
-                    <h3 className="text-lg font-bold text-white">{selectedCategory.title}</h3>
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.35em] text-cyanAccent/70">
+                        Skill Category
+                      </p>
+                      <h3 className="text-3xl font-bold text-white">{selectedCategory.title}</h3>
+                    </div>
                   </motion.div>
 
                   {/* All Skills Progress Bars */}
                   <motion.div 
-                    className="space-y-4 max-h-[400px] overflow-y-auto pr-2 flex-1"
+                    className="space-y-6 max-h-[420px] overflow-y-auto pr-2 flex-1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3, delay: 0.1 }}
@@ -214,41 +229,41 @@ export const Skills: React.FC = () => {
                         initial={{ opacity: 0, x: -20, y: 10 }}
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ 
-                          duration: 0.5, 
-                          delay: 0.15 + idx * 0.08,
+                          duration: 0.45, 
+                          delay: 0.12 + idx * 0.08,
                           ease: [0.34, 1.56, 0.64, 1]
                         }}
-                        className="group/skill"
+                        className="space-y-3"
                       >
-                        {/* Skill Name and Percentage */}
-                        <motion.div 
-                          className="flex justify-between items-center mb-2"
-                          whileHover={{ x: 2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <span className="text-sm font-bold text-white uppercase tracking-wide">
+                        <div className="flex items-center justify-between gap-4">
+                          <span className="text-sm font-semibold text-white">
                             {skill.name}
                           </span>
-                          <motion.span 
-                            className="text-xs font-bold text-cyanAccent"
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, delay: 0.15 + idx * 0.08, repeat: Infinity }}
-                          >
+                          <span className="text-sm font-semibold text-cyanAccent">
                             {skill.level}%
-                          </motion.span>
-                        </motion.div>
-                        
-                        {/* Progress Bar */}
-                        <div className="w-full h-3 bg-[#1a1a2e] rounded-full overflow-hidden border border-white/10 group-hover/skill:border-cyanAccent/40 transition-all">
-                          <motion.div 
+                          </span>
+                        </div>
+
+                        <div className="relative h-3 rounded-full bg-[#1a1a2e] overflow-hidden border border-white/10">
+                          <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: `${skill.level}%` }}
-                            transition={{ 
-                              duration: 1.2, 
-                              delay: 0.2 + idx * 0.08,
+                            transition={{
+                              duration: 0.8 + skill.level * 0.01,
+                              delay: 0.15 + idx * 0.08,
                               ease: "easeOut"
                             }}
-                            className="h-full bg-gradient-to-r from-cyanAccent via-purpleAccent to-cyanAccent rounded-full shadow-lg shadow-cyanAccent/40"
+                            className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-cyanAccent via-purpleAccent to-cyanAccent shadow-lg shadow-cyanAccent/40"
+                          />
+                          <motion.span
+                            initial={{ x: 0 }}
+                            animate={{ x: `${skill.level - 1}%` }}
+                            transition={{
+                              duration: 0.8 + skill.level * 0.01,
+                              delay: 0.15 + idx * 0.08,
+                              ease: "easeOut"
+                            }}
+                            className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-xl shadow-cyanAccent/20"
                           />
                         </div>
                       </motion.div>
@@ -325,13 +340,20 @@ export const Skills: React.FC = () => {
                         </motion.div>
                         
                         {/* Progress Bar */}
-                        <div className="w-full h-3 bg-[#1a1a2e] rounded-full overflow-hidden border border-white/10 group-hover/tool:border-cyanAccent/40 transition-all">
+                        <div
+                          className="w-full h-3 bg-[#1a1a2e] rounded-full overflow-hidden border border-white/10 group-hover/tool:border-cyanAccent/40 transition-all"
+                          role="progressbar"
+                          aria-valuenow={tool.level}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-label={`${tool.name} proficiency`}
+                        >
                           <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: `${tool.level}%` }}
                             viewport={{ once: true }}
                             transition={{ 
-                              duration: 1.2, 
+                              duration: 0.8 + tool.level * 0.01, 
                               delay: 0.1 + idx * 0.08,
                               ease: "easeOut"
                             }}
