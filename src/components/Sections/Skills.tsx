@@ -1,16 +1,42 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {  
   FaJava, FaHtml5, FaCss3Alt, FaJs, FaReact, 
-  FaGithub, FaDocker, FaLinux, FaDatabase, FaCode,
-  FaPython, FaPhp, FaGitSquare, FaNetworkWired
+  FaGithub, FaDocker, FaDatabase, FaCode,
+  FaPython, FaPhp, FaGitSquare,
+  FaFilm, FaCube
 } from "react-icons/fa";
-import { 
-  SiSpringboot, 
-  SiTypescript, SiMysql, SiPostgresql, 
-  SiPostman, SiApachemaven, SiIntellijidea,
-  SiFastapi, SiFlask, SiCplusplus, SiCsharp, SiOracle, SiSwagger, SiGithubactions
+import {
+  SiSpringboot,
+  SiTypescript, SiMysql, SiPostgresql,
+  SiPostman, SiApachemaven,
+  SiFastapi, SiSwagger, SiGithubactions
 } from "react-icons/si";
+
+// Custom brand icons for Adobe software
+const SiAdobeaftereffects: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={`flex items-center justify-center rounded-sm bg-[#160030]/90 border border-[#b279ff] text-[#b279ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
+    Ae
+  </div>
+);
+
+const SiAdobepremierepro: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={`flex items-center justify-center rounded-sm bg-[#1a0022]/90 border border-[#ea77ff] text-[#ea77ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
+    Pr
+  </div>
+);
+
+const SiAdobeillustrator: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={`flex items-center justify-center rounded-sm bg-[#281300]/90 border border-[#ff9a00] text-[#ff9a00] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
+    Ai
+  </div>
+);
+
+const SiAdobephotoshop: React.FC<{ className?: string }> = ({ className }) => (
+  <div className={`flex items-center justify-center rounded-sm bg-[#001c3d]/90 border border-[#31a8ff] text-[#31a8ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
+    Ps
+  </div>
+);
 
 const skillCategories = [
   {
@@ -36,13 +62,14 @@ const skillCategories = [
     ]
   },
   {
-    title: "Programming",
-    icon: FaNetworkWired,
+    title: "Design & Animation",
+    icon: FaFilm,
     items: [
-      { name: "C++", icon: SiCplusplus, color: "text-[#00599C]", level: 90 },
-      { name: "C#", icon: SiCsharp, color: "text-[#239120]", level: 80 },
-      { name: "Linux", icon: FaLinux, color: "text-yellow-200", level: 75 },
-      { name: "PHP", icon: FaPhp, color: "text-[#777BB4]", level: 85 },
+      { name: "After Effects", icon: SiAdobeaftereffects, color: "", level: 90 },
+      { name: "Premiere Pro", icon: SiAdobepremierepro, color: "", level: 85 },
+      { name: "Illustrator", icon: SiAdobeillustrator, color: "", level: 80 },
+      { name: "Photoshop", icon: SiAdobephotoshop, color: "", level: 85 },
+      { name: "Element 3D", icon: FaCube, color: "text-[#00E5B4]", level: 75 },
     ]
   },
   {
@@ -64,23 +91,13 @@ const skillCategories = [
     items: [
       { name: "MySQL", icon: SiMysql, color: "text-[#4479A1]", level: 95 },
       { name: "PostgreSQL", icon: SiPostgresql, color: "text-[#4169E1]", level: 95 },
-      { name: "Oracle", icon: SiOracle, color: "text-[#F80000]", level: 90 },
+      { name: "Oracle", icon: FaDatabase, color: "text-[#F80000]", level: 90 },
     ]
   }
 ];
 
-const toolsHighlights = [
-  { name: "Git & GitHub", level: 85 },
-  { name: "Visual Studio Code", level: 75 },
-  { name: "Responsive Design", level: 78 },
-];
-
 export const Skills: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState<{
-    title: string;
-    icon: any;
-    items: Array<{ name: string; icon: any; color: string; level: number }>;
-  } | null>(skillCategories[1]);
+  const [selectedCategory, setSelectedCategory] = React.useState(skillCategories[0]);
 
   return (
     <section id="skills" className="py-24 relative overflow-hidden bg-[#030014]">
@@ -101,8 +118,8 @@ export const Skills: React.FC = () => {
           }}
         />
         {/* Glowing Orbs */}
-        <div className="absolute top-1/4 left-1/4 w-[30rem] h-[30rem] bg-purpleAccent/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-cyanAccent/10 rounded-full blur-[120px]"></div>
+        <div className="absolute top-1/4 left-1/4 w-120 h-120 bg-purpleAccent/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-120 h-120 bg-cyanAccent/10 rounded-full blur-[120px]"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -112,261 +129,119 @@ export const Skills: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Technical Proficiency
           </h2>
-          <div className="h-1 w-20 bg-gradient-to-r from-cyanAccent to-purpleAccent rounded-full"></div>
+          <div className="h-1 w-28 bg-[#00a3ff] rounded-full"></div>
         </div>
 
-        {/* Main Layout: Grid on Left, Tools on Right */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        {/* Interactive Grid Layout: Category Selection on Left, Skills on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Side: 2x2 Skill Categories Grid */}
-          <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {skillCategories.map((category, idx) => {
-                const CategoryIcon = category.icon;
-                return (
-                  <motion.div 
-                    key={idx}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="group relative cursor-pointer"
-                    onClick={() => setSelectedCategory(selectedCategory?.title === category.title ? null : category)}
-                  >
-                    {/* Gradient border effect */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyanAccent/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
-                    {/* Card */}
-                    <div className={`relative bg-[#0a0a14]/60 backdrop-blur-md border rounded-2xl p-8 h-full transition-all duration-300 ${
-                      selectedCategory?.title === category.title
-                        ? 'border-cyanAccent bg-[#0f0f1a] shadow-lg shadow-cyanAccent/30'
-                        : 'border-cyanAccent/40 hover:border-cyanAccent/70'
-                    }`}>
-                      
-                      {/* Icon and Title */}
-                      <div className="flex items-center gap-3 mb-6">
-                        <div className="p-2 bg-cyanAccent/10 rounded-lg">
-                          <CategoryIcon className="w-6 h-6 text-cyanAccent" />
-                        </div>
-                        <h3 className="text-lg font-bold text-white whitespace-pre-line">
-                          {category.title}
-                        </h3>
-                      </div>
+          {/* Left Side: 2-column Category Buttons (overlaps top-left corner with icon box) */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
+            {skillCategories.map((category, idx) => {
+              const CategoryIcon = category.icon;
+              const isSelected = selectedCategory.title === category.title;
+              return (
+                <motion.button 
+                  key={idx}
+                  onClick={() => setSelectedCategory(category)}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className="group relative text-left cursor-pointer w-full focus:outline-none"
+                >
+                  {/* Overlapping top-left icon badge box */}
+                  <div className={`absolute -top-3 -left-3 w-10 h-10 flex items-center justify-center rounded-lg bg-[#030014] border-2 transition-all duration-300 z-20 ${
+                    isSelected 
+                      ? "border-[#00a3ff] shadow-[0_0_8px_rgba(0,163,255,0.5)] bg-[#0d0a21]" 
+                      : "border-[#00a3ff]/40 bg-[#0c0a21] group-hover:border-[#00a3ff]/80"
+                  }`}>
+                    <CategoryIcon className={`w-5 h-5 transition-all duration-300 ${
+                      isSelected ? "text-[#00a3ff] scale-110" : "text-gray-400 group-hover:text-gray-200"
+                    }`} />
+                  </div>
 
-                      {/* Skills Grid */}
-                      <div className="grid grid-cols-3 gap-3">
-                        {category.items.map((skill, skillIdx) => (
-                          <div
-                            key={skillIdx}
-                            className="bg-[#1a1a2e]/80 border border-white/10 rounded-lg p-3 h-full flex flex-col items-center justify-center gap-2 hover:border-cyanAccent/50 hover:bg-[#252547] transition-all duration-300"
-                          >
-                            <skill.icon className={`w-6 h-6 ${skill.color}`} />
-                            <span className="text-xs font-medium text-center text-gray-300 leading-tight">
-                              {skill.name}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+                  {/* Button Card Container */}
+                  <div className={`relative px-4 py-8 rounded-xl border transition-all duration-300 shadow-md ${
+                    isSelected 
+                      ? "bg-[#1d4ed8] border-[#00a3ff] shadow-[#00a3ff]/20 translate-x-1" 
+                      : "bg-[#0d0a21]/70 border-[#00a3ff]/40 hover:border-[#00a3ff]/80 hover:bg-[#0e0c25]/90 hover:translate-x-0.5"
+                  }`}>
+                    <h3 className="text-center font-bold text-white text-base tracking-wide select-none">
+                      {category.title}
+                    </h3>
+                  </div>
+                </motion.button>
+              );
+            })}
           </div>
 
-          {/* Right Side: Tools Highlights Section */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="group relative"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyanAccent/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            
-            <div className="relative bg-[#0a0a14]/60 backdrop-blur-md border border-cyanAccent/40 p-8 rounded-2xl hover:border-cyanAccent/70 transition-all duration-300 h-full overflow-hidden">
-              
-              {/* Selected Category Display */}
-              {selectedCategory ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="h-full flex flex-col"
-                >
-                  <motion.div 
-                    className="flex items-center gap-3 mb-8"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                  >
-                    <motion.div 
-                      className="p-3 bg-cyanAccent/10 rounded-full"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 2, ease: "linear", repeat: Infinity }}
-                    >
-                      <selectedCategory.icon className="w-7 h-7 text-cyanAccent" />
-                    </motion.div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.35em] text-cyanAccent/70">
-                        Skill Category
-                      </p>
-                      <h3 className="text-3xl font-bold text-white">{selectedCategory.title}</h3>
-                    </div>
-                  </motion.div>
-
-                  {/* All Skills Progress Bars */}
-                  <motion.div 
-                    className="space-y-6 max-h-[420px] overflow-y-auto pr-2 flex-1"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                    {selectedCategory.items.map((skill, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -20, y: 10 }}
-                        animate={{ opacity: 1, x: 0, y: 0 }}
-                        transition={{ 
-                          duration: 0.45, 
-                          delay: 0.12 + idx * 0.08,
-                          ease: [0.34, 1.56, 0.64, 1]
-                        }}
-                        className="space-y-3"
-                      >
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="text-sm font-semibold text-white">
-                            {skill.name}
-                          </span>
-                          <span className="text-sm font-semibold text-cyanAccent">
-                            {skill.level}%
-                          </span>
+          {/* Right Side: Selected Category Skills List */}
+          <div className="lg:col-span-7">
+            <AnimatePresence mode="wait">
+              <motion.div 
+                key={selectedCategory.title}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4 }}
+                className="relative"
+              >
+                {/* Glow behind the card */}
+                <div className="absolute inset-0 bg-[#00a3ff]/5 blur-2xl rounded-2xl pointer-events-none" />
+                
+                {/* Card Container styled like the user request */}
+                <div className="relative bg-[#0d0a21]/75 backdrop-blur-lg border border-[#00a3ff] rounded-xl overflow-hidden shadow-2xl shadow-[#000]/70">
+                  
+                  {/* Card Header matching screenshot style */}
+                  <div className="px-6 py-5 border-b border-[#00a3ff]/40 flex items-center justify-between bg-[#0e0c25]/95">
+                    <span className="text-lg font-bold text-white tracking-wide">
+                      {selectedCategory.title}
+                    </span>
+                    <selectedCategory.icon className="w-5 h-5 text-[#00a3ff]" />
+                  </div>
+                  
+                  {/* Skill Items List */}
+                  <div className="p-8 space-y-6">
+                    {selectedCategory.items.map((skill, skillIdx) => {
+                      const SkillIcon = skill.icon;
+                      return (
+                        <div key={skillIdx} className="space-y-2.5">
+                          {/* Label & Percentage */}
+                          <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                              <SkillIcon className={`w-4 h-4 ${skill.color} opacity-90`} />
+                              <span className="text-sm font-semibold text-gray-200">
+                                {skill.name}
+                              </span>
+                            </div>
+                            <span className="text-sm font-bold text-white">
+                              {skill.level}%
+                            </span>
+                          </div>
+                          
+                          {/* Progress Bar (rate of percent) */}
+                          <div className="h-2 w-full bg-[#1c1d2e] rounded-full overflow-hidden border border-white/5">
+                            <motion.div
+                              initial={{ width: 0 }}
+                              animate={{ width: `${skill.level}%` }}
+                              transition={{
+                                duration: 0.8,
+                                delay: skillIdx * 0.05,
+                                ease: "easeOut"
+                              }}
+                              className="h-full bg-[#00a3ff] rounded-full shadow-[0_0_8px_rgba(0,163,255,0.6)]"
+                            />
+                          </div>
                         </div>
+                      );
+                    })}
+                  </div>
 
-                        <div className="relative h-3 rounded-full bg-[#1a1a2e] overflow-hidden border border-white/10">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${skill.level}%` }}
-                            transition={{
-                              duration: 0.8 + skill.level * 0.01,
-                              delay: 0.15 + idx * 0.08,
-                              ease: "easeOut"
-                            }}
-                            className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-cyanAccent via-purpleAccent to-cyanAccent shadow-lg shadow-cyanAccent/40"
-                          />
-                          <motion.span
-                            initial={{ x: 0 }}
-                            animate={{ x: `${skill.level - 1}%` }}
-                            transition={{
-                              duration: 0.8 + skill.level * 0.01,
-                              delay: 0.15 + idx * 0.08,
-                              ease: "easeOut"
-                            }}
-                            className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-xl shadow-cyanAccent/20"
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-
-                  <motion.button
-                    onClick={() => setSelectedCategory(null)}
-                    className="w-full py-2 px-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-medium rounded-lg transition-all duration-300 mt-6"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.35 }}
-                    whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.15)" }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    Clear Selection
-                  </motion.button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="h-full flex flex-col"
-                >
-                  {/* Tools Header */}
-                  <motion.div 
-                    className="flex items-center gap-3 mb-8"
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="p-2 bg-cyanAccent/10 rounded-lg">
-                      <FaCode className="w-6 h-6 text-cyanAccent" />
-                    </div>
-                    <h3 className="text-lg font-bold text-white">Tools</h3>
-                  </motion.div>
-
-                  {/* Progress Bars */}
-                  <motion.div 
-                    className="space-y-6 flex-1"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                    {toolsHighlights.map((tool, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, x: -20, y: 10 }}
-                        animate={{ opacity: 1, x: 0, y: 0 }}
-                        transition={{ 
-                          duration: 0.5, 
-                          delay: 0.1 + idx * 0.08,
-                          ease: [0.34, 1.56, 0.64, 1]
-                        }}
-                        className="group/tool"
-                      >
-                      <motion.div 
-                          className="flex justify-between items-center mb-2"
-                          whileHover={{ x: 2 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <span className="text-sm font-bold text-white uppercase tracking-wide">
-                            {tool.name}
-                          </span>
-                          <motion.span 
-                            className="text-xs font-bold text-cyanAccent"
-                            animate={{ scale: [1, 1.05, 1] }}
-                            transition={{ duration: 2, delay: 0.1 + idx * 0.08, repeat: Infinity }}
-                          >
-                            {tool.level}%
-                          </motion.span>
-                        </motion.div>
-                        
-                        {/* Progress Bar */}
-                        <div
-                          className="w-full h-3 bg-[#1a1a2e] rounded-full overflow-hidden border border-white/10 group-hover/tool:border-cyanAccent/40 transition-all"
-                          role="progressbar"
-                          aria-valuenow={tool.level}
-                          aria-valuemin={0}
-                          aria-valuemax={100}
-                          aria-label={`${tool.name} proficiency`}
-                        >
-                          <motion.div 
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${tool.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ 
-                              duration: 0.8 + tool.level * 0.01, 
-                              delay: 0.1 + idx * 0.08,
-                              ease: "easeOut"
-                            }}
-                            className="h-full bg-gradient-to-r from-cyanAccent via-purpleAccent to-cyanAccent rounded-full shadow-lg shadow-cyanAccent/40"
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </motion.div>
-              )}
-            </div>
-          </motion.div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
         </div>
 

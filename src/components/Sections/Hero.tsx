@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FileText, ArrowRight, Send, Code, Sparkles } from "lucide-react";
+import { FileText, ArrowRight, Send, Code } from "lucide-react";
 
 export const Hero: React.FC = () => {
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
