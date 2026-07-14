@@ -36,11 +36,10 @@ export const Header: React.FC<HeaderProps> = ({ activeSection }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "py-4 bg-[#030014]/75 backdrop-blur-md border-b border-white/5"
-          : "py-6 bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? "py-4 bg-[#030014]/75 backdrop-blur-md border-b border-white/5"
+        : "py-6 bg-transparent"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
@@ -48,10 +47,10 @@ export const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           onClick={() => scrollToSection("hero")}
           className="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-white hover:opacity-85 transition-opacity"
         >
-          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-tr from-purpleAccent to-cyanAccent flex items-center justify-center shadow-lg shadow-purpleAccent/25">
-            <span className="text-sm font-black">MT</span>
+          <div className="relative w-8 h-10 rounded-lg bg-gradient-to-tr from-purpleAccent to-cyanAccent flex items-center justify-center shadow-lg shadow-purpleAccent/25">
+            <span className="text-lg font-black"></span>
           </div>
-          <span>Mony Titya</span>
+          <span>Mao Tityamony</span>
         </button>
 
         {/* Desktop Nav */}
@@ -63,11 +62,10 @@ export const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${
-                  isActive
-                    ? "text-white bg-gradient-to-r from-purpleAccent/20 to-cyanAccent/20 border border-purpleAccent/30"
-                    : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
-                }`}
+                className={`relative px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${isActive
+                  ? "text-white bg-gradient-to-r from-purpleAccent/20 to-cyanAccent/20 border border-purpleAccent/30"
+                  : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
+                  }`}
               >
                 <Icon className={`w-3.5 h-3.5 ${isActive ? "text-cyanAccent animate-pulse" : "text-gray-400"}`} />
                 {item.label}
@@ -96,11 +94,10 @@ export const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                  isActive
-                    ? "text-white bg-gradient-to-r from-purpleAccent/20 to-cyanAccent/20 border border-purpleAccent/30"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-colors ${isActive
+                  ? "text-white bg-gradient-to-r from-purpleAccent/20 to-cyanAccent/20 border border-purpleAccent/30"
+                  : "text-gray-400 hover:text-white hover:bg-white/5"
+                  }`}
               >
                 <Icon className="w-5 h-5 text-purpleAccent" />
                 {item.label}

@@ -13,14 +13,12 @@ import { Certifications } from "./components/Sections/Certifications";
 import { GitHubStats } from "./components/Sections/GitHubStats";
 import { Testimonials } from "./components/Sections/Testimonials";
 import { Contact } from "./components/Sections/Contact";
-import { Footer } from "./components/Layout/Footer";
 
 export const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    // Setting up intersection observer to highlight navbar items dynamically
     const sections = ["hero", "about", "skills", "projects", "timeline", "contact"];
     const observers = sections.map((id) => {
       const el = document.getElementById(id);
@@ -33,7 +31,7 @@ export const App: React.FC = () => {
           }
         },
         {
-          rootMargin: "-20% 0px -60% 0px", // Trigger when the section occupies a good chunk of the screen
+          rootMargin: "-20% 0px -60% 0px",
         }
       );
       observer.observe(el);
@@ -49,15 +47,11 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-darkBg text-white antialiased font-sans select-none selection:bg-purpleAccent/30 selection:text-white" style={{ background: "#030014" }}>
-      {/* Global 3D Mouse-Tracking Background — always mounted */}
       <MouseBackground />
 
-      {/* Loading Intro Animation */}
       <AnimatePresence>
         {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
-
-      {/* Main Content Layout */}
       {!isLoading && (
         <div className="flex flex-col min-h-screen relative" style={{ zIndex: 1 }}>
           <Header activeSection={activeSection} />
@@ -75,7 +69,6 @@ export const App: React.FC = () => {
             <Contact />
           </main>
 
-          <Footer />
         </div>
       )}
     </div>

@@ -1,10 +1,9 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {  
-  FaJava, FaHtml5, FaCss3Alt, FaJs, FaReact, 
+import {
+  FaJava, FaHtml5, FaCss3Alt, FaJs, FaReact,
   FaGithub, FaDocker, FaDatabase, FaCode,
-  FaPython, FaPhp, FaGitSquare,
-  FaFilm, FaCube
+  FaPython, FaPhp, FaGitSquare
 } from "react-icons/fa";
 import {
   SiSpringboot,
@@ -14,29 +13,6 @@ import {
 } from "react-icons/si";
 
 // Custom brand icons for Adobe software
-const SiAdobeaftereffects: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`flex items-center justify-center rounded-sm bg-[#160030]/90 border border-[#b279ff] text-[#b279ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
-    Ae
-  </div>
-);
-
-const SiAdobepremierepro: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`flex items-center justify-center rounded-sm bg-[#1a0022]/90 border border-[#ea77ff] text-[#ea77ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
-    Pr
-  </div>
-);
-
-const SiAdobeillustrator: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`flex items-center justify-center rounded-sm bg-[#281300]/90 border border-[#ff9a00] text-[#ff9a00] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
-    Ai
-  </div>
-);
-
-const SiAdobephotoshop: React.FC<{ className?: string }> = ({ className }) => (
-  <div className={`flex items-center justify-center rounded-sm bg-[#001c3d]/90 border border-[#31a8ff] text-[#31a8ff] font-extrabold text-[9px] tracking-tighter select-none aspect-square ${className}`}>
-    Ps
-  </div>
-);
 
 const skillCategories = [
   {
@@ -61,17 +37,7 @@ const skillCategories = [
       { name: "PHP", icon: FaPhp, color: "text-[#777BB4]", level: 70 },
     ]
   },
-  {
-    title: "Design & Animation",
-    icon: FaFilm,
-    items: [
-      { name: "After Effects", icon: SiAdobeaftereffects, color: "", level: 90 },
-      { name: "Premiere Pro", icon: SiAdobepremierepro, color: "", level: 85 },
-      { name: "Illustrator", icon: SiAdobeillustrator, color: "", level: 80 },
-      { name: "Photoshop", icon: SiAdobephotoshop, color: "", level: 85 },
-      { name: "Element 3D", icon: FaCube, color: "text-[#00E5B4]", level: 75 },
-    ]
-  },
+
   {
     title: "Tools",
     icon: FaCode,
@@ -85,7 +51,7 @@ const skillCategories = [
       { name: "CI/CD", icon: SiGithubactions, color: "text-[#2088FF]", level: 75 },
     ]
   },
-   {
+  {
     title: "Database",
     icon: FaDatabase,
     items: [
@@ -103,7 +69,7 @@ export const Skills: React.FC = () => {
     <section id="skills" className="py-24 relative overflow-hidden bg-[#030014]">
       {/* 3D Perspective Grid Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div 
+        <div
           className="absolute inset-0 opacity-40"
           style={{
             backgroundImage: `
@@ -123,25 +89,25 @@ export const Skills: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
+
         {/* Header */}
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
             Technical Proficiency
           </h2>
-          <div className="h-1 w-28 bg-[#00a3ff] rounded-full"></div>
+          <div className="h-1 w-28 bg-[#00f0ff] rounded-full shadow-[0_0_8px_rgba(0,240,255,0.6)]"></div>
         </div>
 
         {/* Interactive Grid Layout: Category Selection on Left, Skills on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
+
           {/* Left Side: 2-column Category Buttons (overlaps top-left corner with icon box) */}
           <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-8">
             {skillCategories.map((category, idx) => {
               const CategoryIcon = category.icon;
               const isSelected = selectedCategory.title === category.title;
               return (
-                <motion.button 
+                <motion.button
                   key={idx}
                   onClick={() => setSelectedCategory(category)}
                   initial={{ opacity: 0, y: 20 }}
@@ -151,22 +117,19 @@ export const Skills: React.FC = () => {
                   className="group relative text-left cursor-pointer w-full focus:outline-none"
                 >
                   {/* Overlapping top-left icon badge box */}
-                  <div className={`absolute -top-3 -left-3 w-10 h-10 flex items-center justify-center rounded-lg bg-[#030014] border-2 transition-all duration-300 z-20 ${
-                    isSelected 
-                      ? "border-[#00a3ff] shadow-[0_0_8px_rgba(0,163,255,0.5)] bg-[#0d0a21]" 
-                      : "border-[#00a3ff]/40 bg-[#0c0a21] group-hover:border-[#00a3ff]/80"
-                  }`}>
-                    <CategoryIcon className={`w-5 h-5 transition-all duration-300 ${
-                      isSelected ? "text-[#00a3ff] scale-110" : "text-gray-400 group-hover:text-gray-200"
-                    }`} />
+                  <div className={`absolute -top-3 -left-3 w-10 h-10 flex items-center justify-center rounded-lg bg-[#030014] border-2 transition-all duration-300 z-20 ${isSelected
+                      ? "border-[#00f0ff] shadow-[0_0_10px_rgba(0,240,255,0.5)] bg-[#0d0a21]"
+                      : "border-[#00f0ff]/30 bg-[#0c0a21] group-hover:border-[#00f0ff]/80"
+                    }`}>
+                    <CategoryIcon className={`w-5 h-5 transition-all duration-300 ${isSelected ? "text-[#00f0ff] scale-110" : "text-gray-400 group-hover:text-gray-200"
+                      }`} />
                   </div>
 
                   {/* Button Card Container */}
-                  <div className={`relative px-4 py-8 rounded-xl border transition-all duration-300 shadow-md ${
-                    isSelected 
-                      ? "bg-[#1d4ed8] border-[#00a3ff] shadow-[#00a3ff]/20 translate-x-1" 
-                      : "bg-[#0d0a21]/70 border-[#00a3ff]/40 hover:border-[#00a3ff]/80 hover:bg-[#0e0c25]/90 hover:translate-x-0.5"
-                  }`}>
+                  <div className={`relative px-4 py-8 rounded-xl border transition-all duration-300 shadow-md ${isSelected
+                      ? "bg-[#1d4ed8] border-[#00f0ff] shadow-[#00f0ff]/20 translate-x-1"
+                      : "bg-[#0d0a21]/70 border-[#00f0ff]/30 hover:border-[#00f0ff]/80 hover:bg-[#0e0c25]/90 hover:translate-x-0.5"
+                    }`}>
                     <h3 className="text-center font-bold text-white text-base tracking-wide select-none">
                       {category.title}
                     </h3>
@@ -179,7 +142,7 @@ export const Skills: React.FC = () => {
           {/* Right Side: Selected Category Skills List */}
           <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
-              <motion.div 
+              <motion.div
                 key={selectedCategory.title}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -188,29 +151,28 @@ export const Skills: React.FC = () => {
                 className="relative"
               >
                 {/* Glow behind the card */}
-                <div className="absolute inset-0 bg-[#00a3ff]/5 blur-2xl rounded-2xl pointer-events-none" />
-                
+                <div className="absolute inset-0 bg-[#00f0ff]/5 blur-2xl rounded-2xl pointer-events-none" />
+
                 {/* Card Container styled like the user request */}
-                <div className="relative bg-[#0d0a21]/75 backdrop-blur-lg border border-[#00a3ff] rounded-xl overflow-hidden shadow-2xl shadow-[#000]/70">
-                  
+                <div className="relative bg-[#0d0a21]/75 backdrop-blur-lg border border-[#00f0ff] rounded-xl overflow-hidden shadow-2xl shadow-[#000]/70">
+
                   {/* Card Header matching screenshot style */}
-                  <div className="px-6 py-5 border-b border-[#00a3ff]/40 flex items-center justify-between bg-[#0e0c25]/95">
+                  <div className="px-6 py-5 border-b border-[#00f0ff]/40 flex items-center justify-between bg-[#0e0c25]/95">
                     <span className="text-lg font-bold text-white tracking-wide">
                       {selectedCategory.title}
                     </span>
-                    <selectedCategory.icon className="w-5 h-5 text-[#00a3ff]" />
+                    <selectedCategory.icon className="w-5 h-5 text-[#00f0ff]" />
                   </div>
-                  
+
                   {/* Skill Items List */}
                   <div className="p-8 space-y-6">
                     {selectedCategory.items.map((skill, skillIdx) => {
-                      const SkillIcon = skill.icon;
                       return (
                         <div key={skillIdx} className="space-y-2.5">
                           {/* Label & Percentage */}
                           <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                              <SkillIcon className={`w-4 h-4 ${skill.color} opacity-90`} />
+                            <div className="flex items-center gap-2.5">
+                              <skill.icon className={`w-4 h-4 ${skill.color} opacity-90`} />
                               <span className="text-sm font-semibold text-gray-200">
                                 {skill.name}
                               </span>
@@ -219,7 +181,7 @@ export const Skills: React.FC = () => {
                               {skill.level}%
                             </span>
                           </div>
-                          
+
                           {/* Progress Bar (rate of percent) */}
                           <div className="h-2 w-full bg-[#1c1d2e] rounded-full overflow-hidden border border-white/5">
                             <motion.div
@@ -230,7 +192,7 @@ export const Skills: React.FC = () => {
                                 delay: skillIdx * 0.05,
                                 ease: "easeOut"
                               }}
-                              className="h-full bg-[#00a3ff] rounded-full shadow-[0_0_8px_rgba(0,163,255,0.6)]"
+                              className="h-full bg-[#00f0ff] rounded-full shadow-[0_0_10px_rgba(0,240,255,0.8),0_0_20px_rgba(0,240,255,0.3)]"
                             />
                           </div>
                         </div>
